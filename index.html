@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>American Dream | The Future of Experience</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Navigation HUD -->
+    <nav class="hud" id="main-nav" style="user-select: none;">
+        <div class="hud-logo">AMERICAN DREAM</div>
+        <div class="hud-links">
+            <a href="#hero" class="active">Impact</a>
+            <a href="#scale">Scale</a>
+            <a href="#engine">Engine</a>
+            <a href="#luxury">Luxury</a>
+            <a href="#events">Events</a>
+        </div>
+        <button class="cta-pulse">Inquire</button>
+    </nav>
+
+    <!-- Main Content Carrier -->
+    <main class="cinematic-carrier">
+        
+        <!-- Section: Hero -->
+        <section id="hero" class="v-section">
+            <video autoplay muted loop playsinline class="bg-video" id="hero-video">
+                <source src="https://cdn.pixabay.com/video/2019/02/01/21118-315137091_large.mp4" type="video/mp4">
+            </video>
+            <div class="v-overlay"></div>
+            <div class="v-content">
+                <h1 class="reveal-text">More Than a Destination.<br><span class="accent">A Global Platform.</span></h1>
+                <p class="reveal-sub">Where Retail Meets Revolution. 3 Million Square Feet of Ambition.</p>
+                <div class="scroll-indicator">
+                    <div class="mouse"></div>
+                    <span>Scroll to Explore</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Scaled Data -->
+        <section id="scale" class="v-section stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" data-target="3000000">3,000,000</div>
+                <div class="stat-label">Square Feet of Possibility</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="40">40M+</div>
+                <div class="stat-label">Annual Potential Visitors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="70">70%</div>
+                <div class="stat-label">Entertainment & Experience</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" data-target="15">15MINS</div>
+                <div class="stat-label">From Manhattan</div>
+            </div>
+        </section>
+
+        <!-- Section: The Engine -->
+        <section id="engine" class="v-section grid-section">
+            <div class="grid-header">
+                <h2>The Entertainment <span class="accent">Engine</span></h2>
+                <p>The Western Hemisphere's largest collection of record-breaking attractions.</p>
+            </div>
+            <div class="interactive-grid">
+                <div class="grid-item">
+                    <img src="https://picsum.photos/id/1014/1200/800" alt="Nickelodeon Universe">
+                    <div class="item-overlay">
+                        <h3>Nickelodeon Universe</h3>
+                        <p>Largest Indoor Theme Park</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="https://picsum.photos/id/1011/1200/800" alt="DreamWorks Water Park">
+                    <div class="item-overlay">
+                        <h3>DreamWorks Water Park</h3>
+                        <p>World's Largest Wave Pool</p>
+                    </div>
+                </div>
+                <div class="grid-item">
+                    <img src="https://picsum.photos/id/1015/1200/800" alt="Big SNOW">
+                    <div class="item-overlay">
+                        <h3>Big SNOW</h3>
+                        <p>Year-Round Indoor Skiing</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Luxury -->
+        <section id="luxury" class="v-section split-section">
+            <div class="split-image">
+                 <img src="https://picsum.photos/id/1084/1200/800" alt="The Avenue">
+            </div>
+            <div class="split-content">
+                <h2 class="playfair">The Avenue</h2>
+                <p>Curated for the world's most discerning brands. A sanctuary of luxury where Hermès, Louis Vuitton, and Saks Fifth Avenue redefine the retail experience.</p>
+                <ul class="luxury-list">
+                    <li>Exclusive Flagships</li>
+                    <li>VIP Concierge Services</li>
+                    <li>Global Brand Presence</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section: Events -->
+        <section id="events" class="v-section events-module">
+            <div class="v-overlay-gradient"></div>
+            <div class="module-content">
+                <h2>The World's <span class="accent">Stage</span></h2>
+                <p>From product launches to global concerts. Our infrastructure is your canvas.</p>
+                <div class="deep-dive-grid">
+                    <div class="dive-card">
+                        <i data-lucide="mic"></i>
+                        <h4>Concerts & Live</h4>
+                        <span>Scale: 15k+ Atrium Cap</span>
+                    </div>
+                    <div class="dive-card">
+                        <i data-lucide="sparkles"></i>
+                        <h4>Brand Activations</h4>
+                        <span>Engagement: 100% Immersive</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
