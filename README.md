@@ -1,76 +1,73 @@
-# American Dream | The Future of Experience 🎡
+# American Dream | Digital Experience Deck 🎡
 
 ![American Dream Banner](https://images.unsplash.com/photo-1513267048331-5611cad82e4d?w=1600&q=80)
 
-> **"A Global Platform where Retail meets Revolution. 3 Million Square Feet of Ambition."**
+> **"A Global Platform where Retail meets Revolution. The ultimate Digital Presentation for the ultimate destination."**
 
 ## 🌟 Project Overview
-This project is a high-performance, cinematic interactive sales deck designed to showcase the scale, entertainment, and luxury of the **American Dream Mall**. Built with a "No-Framework" philosophy, it pushes the boundaries of Vanilla web technologies to deliver a premium, app-like experience in the browser.
+This project is a high-performance **Digital Experience Deck** designed to showcase the scale, entertainment, and luxury of the **American Dream Mall**. Unlike a standard website, this project is architected as a **cinematic presentation**, mimicking professional platforms like DigiDeck. It utilizes a sidebar-led navigation system and precision slide-snapping to deliver a premium, curated sales pitch directly in the browser.
 
 ---
 
-## 🚀 Key Features
+## 🚀 Presentation Features
 
-### 1. Cinematic Storytelling
-*   **Video-First Hero**: Atmospheric aerial backgrounds with custom radial overlays for a high-end cinematic feel.
-*   **Scroll-Snap Navigation**: Precision-tuned vertical scrolling that aligns each "chapter" (Impact, Scale, Engine, etc.) perfectly to the viewport.
+### 1. Chapter-Based Navigation
+*   **Sidebar Control Panel**: A persistent high-end sidebar allows the presenter (or client) to jump between key "Chapters" (Impact, Scale, Engine, Luxury, Events).
+*   **Interactive HUD**: Minimalist deck controls (Prev/Next) and a vertical progress tracker ensure the user always knows where they are in the narrative.
 
-### 2. Luxury Glassmorphism HUD
-*   **Adaptive Navigation**: A floating Heads-Up Display (HUD) with saturation filters and real-time blurring.
-*   **Interactive Controls**: Smooth-scroll links that provide non-linear access to key statistics and attraction modules.
+### 2. Cinematic Storytelling
+*   **Slide-Snapping Engine**: The viewport is locked to a 1:1 "Slide" ratio, ensuring every headline and metric is framed perfectly.
+*   **Layered Visuals**: Atmospheric background videos with custom depth overlays and parallax effects.
 
 ### 3. Entertainment Engine
-*   **Interactive Grids**: Hover-triggered animations for world-class attractions like Nickelodeon Universe and DreamWorks Water Park.
-*   **Visual Fidelity**: Curated high-resolution assets served through robust CDNs for instant, cross-origin loading.
-
-### 4. Dynamic Scalability
-*   **Fluid Typography**: Uses CSS `clamp()` logic to ensure headings look massive on desktop and perfectly legible on mobile.
-*   **Responsive Architecture**: A custom-built grid system that intelligently stacks modules on smaller devices while maintaining aesthetic symmetry.
+*   **Interactive Grids**: Presentation-focused grids for world-class attractions like Nickelodeon Universe and DreamWorks Water Park.
+*   **Curated Assets**: High-resolution, cinematic visuals served through robust CDNs for a professional, polished finish.
 
 ---
 
-## 🛠️ Technical Implementation
+## 🛠️ Technical Stewardship
 
 | Category | Technology | Purpose |
 | :--- | :--- | :--- |
-| **Foundation** | HTML5 Semantic Tags | SEO optimization and clean document structure. |
-| **Styling** | Vanilla CSS3 | Custom design system using CSS Variables and Flexbox/Grid. |
-| **Logic** | ES6+ JavaScript | Intersection Observers for animations and custom scroll logic. |
-| **Icons** | Lucide Icons | Minimalist, stroke-based vector graphics. |
-| **Optimizations** | Hardware Acceleration | GPU-accelerated blur effects for the HUD. |
+| **Foundation** | HTML5 Semantic Tags | Structured for presentation flow and data clarity. |
+| **Design System**| CSS Variables | Obsidian & Champagne Gold palette for luxury branding. |
+| **Interaction** | Intersection Observer | High-performance slide reveals and navigation sync. |
+| **Control** | Keyboard API | Navigate through the deck using Arrow Keys or Spacebar. |
+| **Layout** | CSS Grid/Snap | Ensuring perfectly aligned slides across all viewports. |
 
 ---
 
-## 🎨 Design Philosophy
-The deck was built following the **"Obsidian & Gold"** design system:
+## 🎨 Design Philosophy: "The Obsidian & Gold Suite"
+The deck was built following a specialized luxury design system:
 *   **Colors**: Deep Obsidian (`#0A0A0A`), Champagne Gold (`#D4AF37`), and Pure White (`#FFFFFF`).
-*   **Aesthetics**: Glassmorphism, high contrast, and symmetrical layouts inspired by luxury brands like *Hermès* and *Saks Fifth Avenue*.
+*   **Aesthetics**: Glassmorphism, high contrast, and symmetrical layouts inspired by elite flagship storefronts.
 
 ---
 
 ## 📁 Repository Structure
 ```text
 /
-├── index.html      # Main Carrier & Content Structure
-├── styles.css      # Design System & Responsive Logic
-├── script.js        # HUD Interactions & Scroll Observers
-└── README.md       # Project Documentation
+├── index.html          # Main Deck Carrier & Slide Content
+├── styles.css          # Design System, Sidebar & Slide Animations
+├── script.js            # Deck Logic (Navigation, Key Support, Progress)
+├── DESIGN_REPORT.md    # Strategy & AI Collaboration Documentation
+└── README.md           # Project Documentation
 ```
 
 ---
 
-## 🏁 Getting Started
-1. Clone the repository.
-2. Open `index.html` in any modern browser (Chrome, Safari, or Edge).
-3. **No installation required.** This project runs 100% on native web technologies.
+## 🏁 How to Present
+1.  **Launch**: Open `index.html` in any modern browser.
+2.  **Navigate**: Use the **Sidebar** to jump between sections, or use the **Arrow Keys (Left/Right/Up/Down)** for a traditional slide-based flow.
+3.  **Full Screen**: For the best impact, press `F11` in your browser to enter full-screen presentation mode.
 
 ---
 
-## 👨‍💻 Developer Notes
-This project was developed for a Front-End Developer assignment. It emphasizes:
-*   **Clean Code**: No excess libraries or overhead.
-*   **Visual Polish**: Attention to micro-interactions and transitions.
-*   **Responsiveness**: Flawless performance across all viewport sizes.
+## 👨‍💻 Submission Notes
+This project was refactored from a website into a **Digital Experience Deck** to satisfy the requirement for a "DigiDeck" style presentation. It demonstrates:
+*   **Architectural Flexibility**: Pivoting from linear scroll to chapter-based navigation.
+*   **No-Framework Mastery**: Achieving complex app-like behavior using only native browser APIs.
+*   **Sales Rationale**: Designing for a specific business objective (B2B Sales/Partnerships).
 
 ---
 © 2026 Kritarth Pandey. Built for American Dream.
