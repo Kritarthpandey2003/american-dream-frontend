@@ -1,17 +1,73 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Intersection Observer for Stat Counters
-    const stats = document.querySelectorAll('.stat-number');
-    const statsObserverOptions = {
-        threshold: 0.5
+    const slides = document.querySelectorAll('.slide');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const prevBtn = document.getElementById('prev-slide');
+    const nextBtn = document.getElementById('next-slide');
+    
+    let currentSlideIndex = 0;
+
+    // --- Slide State Management ---
+    const updateDeckState = (index) => {
+        if (index < 0 || index >= slides.length) return;
+        
+        // Remove active class from previous
+        slides[currentSlideIndex].classList.remove('active');
+        navLinks.forEach(link => link.classList.remove('active'));
+        
+        // Update to new index
+        currentSlideIndex = index;
+        
+        // Add active class to new
+        slides[currentSlideIndex].classList.add('active');
+        if(navLinks[currentSlideIndex]) {
+            navLinks[currentSlideIndex].classList.add('active');
+        }
+
+        // Trigger Animations if entering stats slide
+        if (slides[currentSlideIndex].id === 'scale') {
+            runStatsAnimation();
+        }
     };
+
+    // --- Navigation Controls ---
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetIndex = parseInt(link.getAttribute('data-index'));
+            updateDeckState(targetIndex);
+        });
+    });
+
+    prevBtn.addEventListener('click', () => updateDeckState(currentSlideIndex - 1));
+    nextBtn.addEventListener('click', () => updateDeckState(currentSlideIndex + 1));
+
+    // --- Keyboard Navigation ---
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+            e.preventDefault();
+            updateDeckState(currentSlideIndex + 1);
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            updateDeckState(currentSlideIndex - 1);
+        }
+    });
+
+    // --- Stats Counter Animation ---
+    const stats = document.querySelectorAll('.stat-number');
+    let hasAnimatedStats = false; // Run only once
 
     const animateValue = (obj, start, end, duration, suffix = "") => {
         let startTimestamp = null;
+        let isFormatted = end > 1000;
+        
         const step = (timestamp) => {
             if (!startTimestamp) startTimestamp = timestamp;
             const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            obj.innerText = Math.floor(progress * (end - start) + start).toLocaleString() + suffix;
+            let currentVal = Math.floor(progress * (end - start) + start);
+            
+            obj.innerText = (isFormatted ? currentVal.toLocaleString() : currentVal) + suffix;
+            
             if (progress < 1) {
                 window.requestAnimationFrame(step);
             }
@@ -19,122 +75,18 @@ document.addEventListener('DOMContentLoaded', () => {
         window.requestAnimationFrame(step);
     };
 
-    const statsObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = parseInt(entry.target.getAttribute('data-target'));
-                const suffix = entry.target.getAttribute('data-suffix') || "";
-                animateValue(entry.target, 0, target, 2000, suffix);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, statsObserverOptions);
+    const runStatsAnimation = () => {
+        if (hasAnimatedStats) return;
+        
+        // Define targets manually for simplicity in this struct
+        const targets = [
+            { el: stats[0], val: 3000000, suffix: "" },
+            { el: stats[1], val: 40, suffix: "M+" },
+            { el: stats[2], val: 15, suffix: " MINS" }
+        ];
 
-    stats.forEach(stat => statsObserver.observe(stat));
-
-    // 2. Deck Navigation & State Management
-    const slides = document.querySelectorAll('.slide');
-    const sidebarItems = document.querySelectorAll('.sidebar-item');
-    const carrier = document.getElementById('deck-canvas');
-    const progressBar = document.getElementById('progress-bar');
-    const prevBtn = document.getElementById('prev-slide');
-    const nextBtn = document.getElementById('next-slide');
-    const menuToggle = document.getElementById('menu-toggle');
-    const deckNav = document.getElementById('deck-nav');
-
-    let currentSlideIndex = 0;
-
-    const updateDeckState = (index) => {
-        // Update Sidebar
-        sidebarItems.forEach((item, i) => {
-            item.classList.toggle('active', i === index);
-        });
-
-        // Update Progress Bar
-        const progress = ((index + 1) / slides.length) * 100;
-        progressBar.style.height = `${progress}%`;
-
-        currentSlideIndex = index;
+        targets.forEach(t => animateValue(t.el, 0, t.val, 2000, t.suffix));
+        hasAnimatedStats = true;
     };
-
-    const navObserverOptions = {
-        root: carrier,
-        threshold: 0.6
-    };
-
-    const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const index = Array.from(slides).indexOf(entry.target);
-                slides.forEach(s => s.classList.remove('active'));
-                entry.target.classList.add('active');
-                updateDeckState(index);
-            }
-        });
-    }, navObserverOptions);
-
-    slides.forEach(slide => navObserver.observe(slide));
-
-    // 3. Navigation Controls
-    const scrollToSlide = (index) => {
-        if (index >= 0 && index < slides.length) {
-            slides[index].scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
-    sidebarItems.forEach((item, index) => {
-        item.addEventListener('click', (e) => {
-            e.preventDefault();
-            scrollToSlide(index);
-            if (window.innerWidth <= 1024) {
-               deckNav.classList.remove('open');
-            }
-        });
-    });
-
-    prevBtn.addEventListener('click', () => scrollToSlide(currentSlideIndex - 1));
-    nextBtn.addEventListener('click', () => scrollToSlide(currentSlideIndex + 1));
-
-    // 4. Keyboard Navigation
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
-            e.preventDefault();
-            scrollToSlide(currentSlideIndex + 1);
-        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
-            e.preventDefault();
-            scrollToSlide(currentSlideIndex - 1);
-        }
-    });
-
-    // 5. Mobile Menu Logic
-    menuToggle.addEventListener('click', () => {
-        deckNav.classList.toggle('open');
-    });
-
-    // 6. Parallax Effect (Refined)
-    carrier.addEventListener('scroll', () => {
-        const scrolled = carrier.scrollTop;
-        const activeSlide = slides[currentSlideIndex];
-        const video = activeSlide.querySelector('.bg-video');
-        if (video) {
-            const offset = (scrolled - activeSlide.offsetTop) * 0.3;
-            video.style.transform = `translateY(${offset}px)`;
-        }
-    });
-
-    // 7. Inquire Button Transformation
-    const inquireBtns = document.querySelectorAll('.cta-sidebar, .cta-pulse');
-    inquireBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const originalText = btn.innerText;
-            btn.innerText = "Requesting Package...";
-            
-            setTimeout(() => {
-                alert("Digital Sales Pitch Package sent. Welcome to the future of retail.");
-                btn.innerText = originalText;
-            }, 1000);
-        });
-    });
-
 
 });
