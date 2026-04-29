@@ -100,10 +100,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const spotlightOverlay = document.getElementById('spotlight-overlay');
 
     if (avenueModal && spotlightOverlay) {
-        avenueModal.addEventListener('mousemove', (e) => {
-            spotlightOverlay.style.setProperty('--mouse-x', `${e.clientX}px`);
-            spotlightOverlay.style.setProperty('--mouse-y', `${e.clientY}px`);
+        const updateSpotlight = (x, y) => {
+            spotlightOverlay.style.setProperty('--mouse-x', `${x}px`);
+            spotlightOverlay.style.setProperty('--mouse-y', `${y}px`);
+        };
+
+        avenueModal.addEventListener('mousemove', (e) => updateSpotlight(e.clientX, e.clientY));
+        avenueModal.addEventListener('touchmove', (e) => {
+            if(e.touches.length > 0) {
+                updateSpotlight(e.touches[0].clientX, e.touches[0].clientY);
+            }
         });
+        
         spotlightOverlay.style.setProperty('--mouse-x', `-1000px`);
         spotlightOverlay.style.setProperty('--mouse-y', `-1000px`);
     }
