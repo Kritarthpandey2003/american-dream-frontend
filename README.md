@@ -1,73 +1,27 @@
-# American Dream | Digital Experience Deck 🎡
+# American Dream: The Interactive Atlas
 
-![American Dream Banner](https://images.unsplash.com/photo-1513267048331-5611cad82e4d?w=1600&q=80)
+This repository contains the front-end code for the "American Dream" Digital Deck, completely reimagined as a non-linear, video-first interactive experience (The Atlas).
 
-> **"A Global Platform where Retail meets Revolution. The ultimate Digital Presentation for the ultimate destination."**
+## Strategic Pivot: The Atlas Overhaul
 
-## 🌟 Project Overview
-This project is a high-performance **Digital Experience Deck** designed to showcase the scale, entertainment, and luxury of the **American Dream Mall**. Unlike a standard website, this project is architected as a **cinematic presentation**, mimicking professional platforms like DigiDeck. It utilizes a sidebar-led navigation system and precision slide-snapping to deliver a premium, curated sales pitch directly in the browser.
+Based on feedback requiring a highly interactive, non-linear journey, we abandoned the traditional "Slide 1 to 5" presentation format. This project is now structured as an **Immersive Hub and Spoke Model**.
 
----
+- **The Atlas Hub**: Users land on a dynamic, video-rich dashboard where they are presented with four high-level entry points (Scale, Engine, Avenue, Stage). They drive the journey.
+- **Deep Dives**: Clicking a node expands it into a full-screen, highly emotional, and commercially driven deep dive.
+- **Generative AI Integration**: All static stock photography has been replaced with bespoke, high-resolution generative AI imagery created specifically for this project to evoke a sense of futuristic luxury and unprecedented scale.
 
-## 🚀 Presentation Features
+## The "I Need to Be Here" Moment: The Spotlight Interaction
 
-### 1. Chapter-Based Navigation
-*   **Sidebar Control Panel**: A persistent high-end sidebar allows the presenter (or client) to jump between key "Chapters" (Impact, Scale, Engine, Luxury, Events).
-*   **Interactive HUD**: Minimalist deck controls (Prev/Next) and a vertical progress tracker ensure the user always knows where they are in the narrative.
+**Interaction Details:**
+Navigate to **03. The Avenue**. Upon entering this section, the screen is dark and atmospheric. As the user moves their mouse, a dynamic "spotlight" reveals a bustling, ultra-luxury retail environment beneath the darkness. Only when illuminated do the key commercial metrics (e.g., "$1.5B Projected Sales", "VIP Concierge Network") reveal themselves within the spotlight.
 
-### 2. Cinematic Storytelling
-*   **Slide-Snapping Engine**: The viewport is locked to a 1:1 "Slide" ratio, ensuring every headline and metric is framed perfectly.
-*   **Layered Visuals**: Atmospheric background videos with custom depth overlays and parallax effects.
+**Why this earns the reaction:**
+*“By forcing the prospect to physically 'reveal' the foot traffic and sales potential through their own cursor movement, they stop passively reading a slide and start feeling the exclusivity of the space. The darkness creates an atmosphere of scarcity, while the spotlight reveals vibrant, undeniable commercial energy. It transforms a standard metric into a tangible opportunity they are actively uncovering—creating instant FOMO and the realization that they need to claim their spot before it's gone.”*
 
-### 3. Entertainment Engine
-*   **Interactive Grids**: Presentation-focused grids for world-class attractions like Nickelodeon Universe and DreamWorks Water Park.
-*   **Curated Assets**: High-resolution, cinematic visuals served through robust CDNs for a professional, polished finish.
+## Technical Implementation
+- **HTML5 & CSS3**: Utilizes CSS Grid, CSS Variables for mouse tracking, and complex `mask-image: radial-gradient` rules for the Spotlight effect.
+- **Vanilla JavaScript**: Handles state routing between the Hub and Deep Dives without heavy frameworks.
+- **Responsive**: Fully functional across desktop viewports.
 
----
-
-## 🛠️ Technical Stewardship
-
-| Category | Technology | Purpose |
-| :--- | :--- | :--- |
-| **Foundation** | HTML5 Semantic Tags | Structured for presentation flow and data clarity. |
-| **Design System**| CSS Variables | Obsidian & Champagne Gold palette for luxury branding. |
-| **Interaction** | Intersection Observer | High-performance slide reveals and navigation sync. |
-| **Control** | Keyboard API | Navigate through the deck using Arrow Keys or Spacebar. |
-| **Layout** | CSS Grid/Snap | Ensuring perfectly aligned slides across all viewports. |
-
----
-
-## 🎨 Design Philosophy: "The Obsidian & Gold Suite"
-The deck was built following a specialized luxury design system:
-*   **Colors**: Deep Obsidian (`#0A0A0A`), Champagne Gold (`#D4AF37`), and Pure White (`#FFFFFF`).
-*   **Aesthetics**: Glassmorphism, high contrast, and symmetrical layouts inspired by elite flagship storefronts.
-
----
-
-## 📁 Repository Structure
-```text
-/
-├── index.html          # Main Deck Carrier & Slide Content
-├── styles.css          # Design System, Sidebar & Slide Animations
-├── script.js            # Deck Logic (Navigation, Key Support, Progress)
-├── DESIGN_REPORT.md    # Strategy & AI Collaboration Documentation
-└── README.md           # Project Documentation
-```
-
----
-
-## 🏁 How to Present
-1.  **Launch**: Open `index.html` in any modern browser.
-2.  **Navigate**: Use the **Sidebar** to jump between sections, or use the **Arrow Keys (Left/Right/Up/Down)** for a traditional slide-based flow.
-3.  **Full Screen**: For the best impact, press `F11` in your browser to enter full-screen presentation mode.
-
----
-
-## 👨‍💻 Submission Notes
-This project was refactored from a website into a **Digital Experience Deck** to satisfy the requirement for a "DigiDeck" style presentation. It demonstrates:
-*   **Architectural Flexibility**: Pivoting from linear scroll to chapter-based navigation.
-*   **No-Framework Mastery**: Achieving complex app-like behavior using only native browser APIs.
-*   **Sales Rationale**: Designing for a specific business objective (B2B Sales/Partnerships).
-
----
-© 2026 Kritarth Pandey. Built for American Dream.
+## Running Locally
+Simply open `index.html` in any modern web browser to experience the Atlas. No build tools required.

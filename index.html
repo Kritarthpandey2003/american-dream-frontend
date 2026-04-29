@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>American Dream | Digital Deck</title>
+    <title>American Dream | The Interactive Atlas</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,130 +12,137 @@
 </head>
 <body>
 
-    <!-- DigiDeck Sticky Top Nav -->
-    <header class="digideck-header">
-        <div class="header-logo">AMERICAN<span class="cross">X</span>DREAM</div>
-        <nav class="header-nav">
-            <a href="#hero" class="nav-link active" data-index="0">IMPACT</a>
-            <a href="#scale" class="nav-link" data-index="1">SCALE</a>
-            <a href="#engine" class="nav-link" data-index="2">ENGINE & ATTRACTIONS</a>
-            <a href="#luxury" class="nav-link" data-index="3">LUXURY RETAIL</a>
-        </nav>
-    </header>
+    <!-- Custom Luxury Cursor -->
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring"></div>
 
-    <!-- Main Content Canvas (Fade Transitions) -->
-    <main class="digideck-canvas" id="deck-canvas">
-        
-        <!-- Section: Hero (0) -->
-        <section id="hero" class="slide active">
-            <video autoplay muted loop playsinline class="bg-video">
-                <source src="https://cdn.pixabay.com/video/2019/02/01/21118-315137091_large.mp4" type="video/mp4">
-            </video>
-            <div class="v-overlay-blue"></div>
-            <div class="slide-content centered-content">
-                <h1 class="reveal-clip delay-1 playfair">More Than a Destination.</h1>
-                <h2 class="reveal-clip delay-2">A GLOBAL PLATFORM.</h2>
-                <p class="reveal-clip delay-3">Where Retail Meets Revolution. 3 Million Square Feet of Ambition.</p>
-            </div>
-        </section>
-
-        <!-- Section: Scaled Data (1) -->
-        <section id="scale" class="slide">
-            <div class="slide-content centered-content pattern-bg">
-                <div class="grid-header reveal-clip delay-1">
-                    <h2>UNPRECEDENTED SCALE</h2>
-                </div>
-                <div class="stats-container">
-                    <div class="stat-card reveal-clip delay-1">
-                        <div class="stat-number">3,000,000</div>
-                        <div class="stat-label">Square Feet of Possibility</div>
-                    </div>
-                    <div class="stat-card reveal-clip delay-2">
-                        <div class="stat-number">40M+</div>
-                        <div class="stat-label">Annual Potential Visitors</div>
-                    </div>
-                    <div class="stat-card reveal-clip delay-3">
-                        <div class="stat-number">15 MINS</div>
-                        <div class="stat-label">From Manhattan</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: The Engine (2) - Matching Reference Grid -->
-        <section id="engine" class="slide reference-layout">
-            <div class="slide-content">
-                <div class="grid-header reveal-clip delay-1">
-                    <h2>THE ENTERTAINMENT ENGINE</h2>
-                </div>
-                <div class="three-col-grid">
-                    <div class="grid-card reveal-clip delay-1">
-                        <div class="card-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1513346940221-6f673d962e97?auto=format&fit=crop&w=800&q=80" alt="Nickelodeon">
-                        </div>
-                        <h3>Nickelodeon Universe:</h3>
-                        <p>The largest indoor theme park in the Western Hemisphere featuring record-breaking roller coasters and family attractions.</p>
-                    </div>
-                    <div class="grid-card reveal-clip delay-2">
-                        <div class="card-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1582650625119-3a31f8fa2699?auto=format&fit=crop&w=800&q=80" alt="DreamWorks">
-                        </div>
-                        <h3>DreamWorks Water Park:</h3>
-                        <p>The largest indoor water park in North America, featuring the world's largest indoor wave pool and luxury cabanas.</p>
-                    </div>
-                    <div class="grid-card reveal-clip delay-3">
-                        <div class="card-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=800&q=80" alt="Big SNOW">
-                        </div>
-                        <h3>Big SNOW:</h3>
-                        <p>North America's first and only indoor, real-snow, year-round ski and snowboard resort. Perfect for brand activations.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section: Luxury (3) -->
-        <section id="luxury" class="slide reference-layout">
-            <div class="slide-content">
-                <div class="grid-header reveal-clip delay-1">
-                    <h2>THE AVENUE: LUXURY RETAIL</h2>
-                </div>
-                <div class="three-col-grid">
-                    <div class="grid-card reveal-clip delay-1">
-                        <div class="card-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&w=800&q=80" alt="Hermes">
-                        </div>
-                        <h3>Exclusive Flagships:</h3>
-                        <p>A sanctuary of luxury where Hermès, Louis Vuitton, and Tiffany & Co redefine the retail experience.</p>
-                    </div>
-                    <div class="grid-card reveal-clip delay-2">
-                        <div class="card-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Concierge">
-                        </div>
-                        <h3>VIP Concierge:</h3>
-                        <p>White-glove services offering private styling, VIP lounge access, and dedicated global brand liaisons.</p>
-                    </div>
-                    <div class="grid-card reveal-clip delay-3">
-                        <div class="card-img-wrapper">
-                            <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=800&q=80" alt="Global Reach">
-                        </div>
-                        <h3>Global Presence:</h3>
-                        <p>Unmatched opportunities for flagship expressions and curated brand installations in front of an international audience.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Bottom Footer -->
-    <div class="digideck-footer">
-        <div class="footer-logo">DIGIDECK</div>
+    <!-- Cinematic Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">AMERICAN<span class="cross">X</span>DREAM</div>
     </div>
 
-    <!-- DigiDeck Floating Controls -->
-    <button id="prev-slide" class="digi-nav-btn prev-btn"><i data-lucide="arrow-left"></i></button>
-    <button id="next-slide" class="digi-nav-btn next-btn"><i data-lucide="arrow-right"></i></button>
+
+    <!-- Video Background for Hub -->
+    <video autoplay muted loop playsinline class="hub-video">
+        <source src="https://cdn.pixabay.com/video/2019/02/01/21118-315137091_large.mp4" type="video/mp4">
+    </video>
+    <div class="hub-overlay"></div>
+
+    <!-- The Atlas Hub (Non-Linear Menu) -->
+    <div class="atlas-hub active" id="atlas-hub">
+        <header class="hub-header">
+            <div class="logo">AMERICAN<span class="cross">X</span>DREAM</div>
+            <div class="subtitle">Select your journey.</div>
+        </header>
+
+        <div class="hub-grid">
+            <div class="hub-card" data-target="deep-scale">
+                <img src="file:///C:/Users/Lenovo/.gemini/antigravity/brain/0c11a894-266c-45b1-acf7-8e5ead400d20/architectural_scale_1777291589427.png" alt="Scale">
+                <div class="card-content">
+                    <h3>01. The Scale</h3>
+                    <p>Unprecedented Ambition</p>
+                </div>
+            </div>
+            <div class="hub-card" data-target="deep-engine">
+                <img src="file:///C:/Users/Lenovo/.gemini/antigravity/brain/0c11a894-266c-45b1-acf7-8e5ead400d20/neon_theme_park_1777291561029.png" alt="Engine">
+                <div class="card-content">
+                    <h3>02. The Engine</h3>
+                    <p>Global Entertainment Hub</p>
+                </div>
+            </div>
+            <div class="hub-card" data-target="deep-avenue">
+                <img src="file:///C:/Users/Lenovo/.gemini/antigravity/brain/0c11a894-266c-45b1-acf7-8e5ead400d20/luxury_avenue_1777291544575.png" alt="Avenue">
+                <div class="card-content">
+                    <h3>03. The Avenue</h3>
+                    <p>Ultra-Luxury Retail</p>
+                </div>
+            </div>
+            <div class="hub-card" data-target="deep-stage">
+                <img src="file:///C:/Users/Lenovo/.gemini/antigravity/brain/0c11a894-266c-45b1-acf7-8e5ead400d20/concert_stage_1777291574637.png" alt="Stage">
+                <div class="card-content">
+                    <h3>04. The Stage</h3>
+                    <p>World-Class Activations</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DEEP DIVES (Modals that expand over the hub) -->
+
+    <!-- 01. The Scale -->
+    <div class="deep-dive" id="deep-scale">
+        <button class="close-btn"><i data-lucide="x"></i> Return to Hub</button>
+        <div class="deep-bg">
+            <img src="file:///C:/Users/Lenovo/.gemini/antigravity/brain/0c11a894-266c-45b1-acf7-8e5ead400d20/architectural_scale_1777291589427.png" alt="Scale Background">
+            <div class="v-overlay-dark"></div>
+            <!-- Particle Data Stream Canvas -->
+            <canvas id="particle-canvas" class="particle-canvas"></canvas>
+        </div>
+        <div class="deep-content centered pointer-none">
+            <h2 class="playfair">An Architectural Marvel</h2>
+            <div class="stats-row">
+                <div class="stat"><span class="num">3M</span><span class="label">Sq Ft of Possibility</span></div>
+                <div class="stat"><span class="num">40M+</span><span class="label">Annual Footfall</span></div>
+                <div class="stat"><span class="num">15M</span><span class="label">From Manhattan</span></div>
+            </div>
+            <p class="emotional-copy">This isn't real estate. This is a globally recognized platform. It is a magnetic force pulling millions across the Hudson, defying standard retail metrics.</p>
+        </div>
+    </div>
+
+    <!-- 02. The Engine -->
+    <div class="deep-dive" id="deep-engine">
+        <button class="close-btn"><i data-lucide="x"></i> Return to Hub</button>
+        <div class="deep-bg">
+            <img src="file:///C:/Users/Lenovo/.gemini/antigravity/brain/0c11a894-266c-45b1-acf7-8e5ead400d20/neon_theme_park_1777291561029.png" alt="Engine Background">
+            <div class="v-overlay-dark"></div>
+        </div>
+        <div class="deep-content centered">
+            <h2 class="playfair">The Entertainment Engine</h2>
+            <p class="emotional-copy">The Western Hemisphere's most immersive, record-breaking attractions. From the neon glow of Nickelodeon Universe to the rush of Big SNOW, we don't just host visitors—we build memories that bind them to this space forever.</p>
+        </div>
+    </div>
+
+    <!-- 03. The Avenue (Spotlight Interactive) -->
+    <div class="deep-dive spotlight-container" id="deep-avenue">
+        <button class="close-btn"><i data-lucide="x"></i> Return to Hub</button>
+        <div class="deep-bg spotlight-bg" id="spotlight-bg">
+            <img src="file:///C:/Users/Lenovo/.gemini/antigravity/brain/0c11a894-266c-45b1-acf7-8e5ead400d20/luxury_avenue_1777291544575.png" alt="Avenue Background">
+        </div>
+        <div class="spotlight-dark-overlay" id="spotlight-overlay">
+            <div class="instruction">
+                <i data-lucide="mouse-pointer-2"></i> Move to reveal the opportunity
+            </div>
+        </div>
+        <div class="deep-content pointer-none">
+            <div class="spotlight-copy">
+                <h2 class="playfair">The Avenue</h2>
+                <h3 class="sales-metric">REVEAL THE POTENTIAL</h3>
+            </div>
+            
+            <!-- Hidden metrics that appear under the spotlight -->
+            <div class="spotlight-metric" style="top: 30%; left: 20%;">
+                <span class="val">$1.5B</span>
+                <span class="txt">Projected Sales</span>
+            </div>
+            <div class="spotlight-metric" style="top: 50%; right: 25%;">
+                <span class="val">VIP</span>
+                <span class="txt">Concierge Network</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 04. The Stage -->
+    <div class="deep-dive" id="deep-stage">
+        <button class="close-btn"><i data-lucide="x"></i> Return to Hub</button>
+        <div class="deep-bg">
+            <img src="file:///C:/Users/Lenovo/.gemini/antigravity/brain/0c11a894-266c-45b1-acf7-8e5ead400d20/concert_stage_1777291574637.png" alt="Stage Background">
+            <div class="v-overlay-dark"></div>
+        </div>
+        <div class="deep-content centered">
+            <h2 class="playfair">Your Global Stage</h2>
+            <p class="emotional-copy">From intimate VIP brand launches to 15,000-cap atrium concerts. When you partner with us, you don't rent space. You command the cultural conversation.</p>
+        </div>
+    </div>
 
     <script src="script.js"></script>
     <script>

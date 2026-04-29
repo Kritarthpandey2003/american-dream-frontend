@@ -1,92 +1,178 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    const slides = document.querySelectorAll('.slide');
-    const navLinks = document.querySelectorAll('.nav-link');
-    const prevBtn = document.getElementById('prev-slide');
-    const nextBtn = document.getElementById('next-slide');
-    
-    let currentSlideIndex = 0;
+    // === 1. CINEMATIC PRELOADER ===
+    const preloader = document.getElementById('preloader');
+    setTimeout(() => {
+        preloader.classList.add('hidden');
+    }, 2500); // Wait for logo animation to finish
 
-    // --- Slide State Management ---
-    const updateDeckState = (index) => {
-        if (index < 0 || index >= slides.length) return;
-        
-        // Remove active class from previous
-        slides[currentSlideIndex].classList.remove('active');
-        navLinks.forEach(link => link.classList.remove('active'));
-        
-        // Update to new index
-        currentSlideIndex = index;
-        
-        // Add active class to new
-        slides[currentSlideIndex].classList.add('active');
-        if(navLinks[currentSlideIndex]) {
-            navLinks[currentSlideIndex].classList.add('active');
-        }
+    // === 2. CUSTOM LUXURY CURSOR ===
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let ringX = mouseX;
+    let ringY = mouseY;
 
-        // Trigger Animations if entering stats slide
-        if (slides[currentSlideIndex].id === 'scale') {
-            runStatsAnimation();
-        }
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        // Immediate update for dot
+        dot.style.top = `${mouseY}px`;
+        dot.style.left = `${mouseX}px`;
+    });
+
+    // Lerp (Linear Interpolation) for smooth trailing ring
+    const renderCursor = () => {
+        ringX += (mouseX - ringX) * 0.15; // Delay factor
+        ringY += (mouseY - ringY) * 0.15;
+        
+        ring.style.top = `${ringY}px`;
+        ring.style.left = `${ringX}px`;
+        
+        requestAnimationFrame(renderCursor);
     };
+    requestAnimationFrame(renderCursor);
 
-    // --- Navigation Controls ---
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetIndex = parseInt(link.getAttribute('data-index'));
-            updateDeckState(targetIndex);
+    // Cursor Hover States
+    const interactables = document.querySelectorAll('a, button, .hub-card');
+    interactables.forEach(el => {
+        el.addEventListener('mouseenter', () => ring.classList.add('hovering'));
+        el.addEventListener('mouseleave', () => ring.classList.remove('hovering'));
+    });
+
+
+    // === 3. HUB ROUTING & 3D PARALLAX TILT ===
+    const hub = document.getElementById('atlas-hub');
+    const cards = document.querySelectorAll('.hub-card');
+    const closeBtns = document.querySelectorAll('.close-btn');
+
+    cards.forEach(card => {
+        // Routing
+        card.addEventListener('click', () => {
+            const targetId = card.getAttribute('data-target');
+            const targetModal = document.getElementById(targetId);
+            
+            hub.classList.remove('active');
+            
+            setTimeout(() => {
+                targetModal.classList.add('active');
+                if (targetId === 'deep-scale') startParticles();
+            }, 300);
+        });
+
+        // 3D Parallax Tilt
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element.
+            const y = e.clientY - rect.top;  // y position within the element.
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = ((y - centerY) / centerY) * -15; // Max 15deg
+            const rotateY = ((x - centerX) / centerX) * 15;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
         });
     });
 
-    prevBtn.addEventListener('click', () => updateDeckState(currentSlideIndex - 1));
-    nextBtn.addEventListener('click', () => updateDeckState(currentSlideIndex + 1));
-
-    // --- Keyboard Navigation ---
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
-            e.preventDefault();
-            updateDeckState(currentSlideIndex + 1);
-        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-            e.preventDefault();
-            updateDeckState(currentSlideIndex - 1);
-        }
+    closeBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const modal = e.target.closest('.deep-dive');
+            modal.classList.remove('active');
+            
+            if (modal.id === 'deep-scale') stopParticles();
+            
+            setTimeout(() => {
+                hub.classList.add('active');
+            }, 500);
+        });
     });
 
-    // --- Stats Counter Animation ---
-    const stats = document.querySelectorAll('.stat-number');
-    let hasAnimatedStats = false; // Run only once
+    // === 4. THE SPOTLIGHT INTERACTION ===
+    const avenueModal = document.getElementById('deep-avenue');
+    const spotlightOverlay = document.getElementById('spotlight-overlay');
 
-    const animateValue = (obj, start, end, duration, suffix = "") => {
-        let startTimestamp = null;
-        let isFormatted = end > 1000;
-        
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            let currentVal = Math.floor(progress * (end - start) + start);
-            
-            obj.innerText = (isFormatted ? currentVal.toLocaleString() : currentVal) + suffix;
-            
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        };
-        window.requestAnimationFrame(step);
-    };
+    if (avenueModal && spotlightOverlay) {
+        avenueModal.addEventListener('mousemove', (e) => {
+            spotlightOverlay.style.setProperty('--mouse-x', `${e.clientX}px`);
+            spotlightOverlay.style.setProperty('--mouse-y', `${e.clientY}px`);
+        });
+        spotlightOverlay.style.setProperty('--mouse-x', `-1000px`);
+        spotlightOverlay.style.setProperty('--mouse-y', `-1000px`);
+    }
 
-    const runStatsAnimation = () => {
-        if (hasAnimatedStats) return;
-        
-        // Define targets manually for simplicity in this struct
-        const targets = [
-            { el: stats[0], val: 3000000, suffix: "" },
-            { el: stats[1], val: 40, suffix: "M+" },
-            { el: stats[2], val: 15, suffix: " MINS" }
-        ];
+    // === 5. "DIGITAL TWIN" PARTICLE ENGINE (Scale Section) ===
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    let particlesArray = [];
+    let animationId = null;
 
-        targets.forEach(t => animateValue(t.el, 0, t.val, 2000, t.suffix));
-        hasAnimatedStats = true;
-    };
+    if (canvas) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    }
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2;
+            this.speedX = Math.random() * 2 - 1;
+            this.speedY = Math.random() * 2 - 1;
+        }
+        update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+            if (this.x > canvas.width) this.x = 0;
+            if (this.x < 0) this.x = canvas.width;
+            if (this.y > canvas.height) this.y = 0;
+            if (this.y < 0) this.y = canvas.height;
+        }
+        draw() {
+            ctx.fillStyle = 'rgba(212, 175, 55, 0.5)'; // Gold particles
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+
+    function initParticles() {
+        particlesArray = [];
+        for (let i = 0; i < 150; i++) {
+            particlesArray.push(new Particle());
+        }
+    }
+
+    function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+            particlesArray[i].draw();
+        }
+        animationId = requestAnimationFrame(animateParticles);
+    }
+
+    function startParticles() {
+        if (!canvas) return;
+        initParticles();
+        animateParticles();
+    }
+
+    function stopParticles() {
+        if (animationId) cancelAnimationFrame(animationId);
+        if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 
 });
