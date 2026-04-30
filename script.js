@@ -43,17 +43,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // === 3. HUB ROUTING & 3D PARALLAX TILT ===
+    // === 3. HUB ROUTING, AUDIO & 3D PARALLAX TILT ===
     const hub = document.getElementById('atlas-hub');
     const cards = document.querySelectorAll('.hub-card');
     const closeBtns = document.querySelectorAll('.close-btn');
+    const uiSound = document.getElementById('ui-sound');
 
     cards.forEach(card => {
-        // Routing
+        // Routing & Audio
         card.addEventListener('click', () => {
             const targetId = card.getAttribute('data-target');
             const targetModal = document.getElementById(targetId);
             
+            // Play Audio
+            if (uiSound) {
+                uiSound.volume = 0.4; // Keep it subtle
+                uiSound.currentTime = 0;
+                uiSound.play().catch(e => console.log("Audio play prevented by browser policy"));
+            }
+
             hub.classList.remove('active');
             
             setTimeout(() => {
@@ -79,6 +87,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         card.addEventListener('mouseleave', () => {
             card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)`;
+        });
+    });
+
+    // Magnetic Button Physics
+    const magneticBtns = document.querySelectorAll('.magnetic-btn');
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            // Pull the button towards the cursor
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            // Snap back
+            btn.style.transform = `translate(0px, 0px)`;
         });
     });
 

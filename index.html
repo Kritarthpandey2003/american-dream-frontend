@@ -9,8 +9,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
-</head>
 <body>
+
+    <!-- Cinematic Audio (Muted initially, played via JS on click) -->
+    <audio id="ui-sound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_7936a29dcb.mp3" preload="auto"></audio>
 
     <!-- Custom Luxury Cursor -->
     <div class="cursor-dot" id="cursor-dot"></div>
@@ -71,7 +73,7 @@
 
     <!-- 01. The Scale -->
     <div class="deep-dive" id="deep-scale">
-        <button class="close-btn"><i data-lucide="x"></i> Return to Hub</button>
+        <button class="close-btn magnetic-btn"><i data-lucide="x"></i> Return to Hub</button>
         <div class="deep-bg">
             <img src="./assets/architectural_scale.png" alt="Scale Background">
             <div class="v-overlay-dark"></div>
@@ -79,32 +81,59 @@
             <canvas id="particle-canvas" class="particle-canvas"></canvas>
         </div>
         <div class="deep-content centered pointer-none">
-            <h2 class="playfair">An Architectural Marvel</h2>
+            <div class="reveal-mask"><h2 class="playfair reveal-text">An Architectural Marvel</h2></div>
             <div class="stats-row">
-                <div class="stat"><span class="num">3M</span><span class="label">Sq Ft of Possibility</span></div>
-                <div class="stat"><span class="num">40M+</span><span class="label">Annual Footfall</span></div>
-                <div class="stat"><span class="num">15M</span><span class="label">From Manhattan</span></div>
+                <div class="stat">
+                    <div class="reveal-mask"><span class="num reveal-text" style="transition-delay: 0.1s">3M</span></div>
+                    <div class="reveal-mask"><span class="label reveal-text" style="transition-delay: 0.2s">Sq Ft of Possibility</span></div>
+                </div>
+                <div class="stat">
+                    <div class="reveal-mask"><span class="num reveal-text" style="transition-delay: 0.2s">40M+</span></div>
+                    <div class="reveal-mask"><span class="label reveal-text" style="transition-delay: 0.3s">Annual Footfall</span></div>
+                </div>
+                <div class="stat">
+                    <div class="reveal-mask"><span class="num reveal-text" style="transition-delay: 0.3s">15M</span></div>
+                    <div class="reveal-mask"><span class="label reveal-text" style="transition-delay: 0.4s">From Manhattan</span></div>
+                </div>
             </div>
-            <p class="emotional-copy">This isn't real estate. This is a globally recognized platform. It is a magnetic force pulling millions across the Hudson, defying standard retail metrics.</p>
+            <div class="reveal-mask"><p class="emotional-copy reveal-text" style="transition-delay: 0.5s">This isn't real estate. This is a globally recognized platform. It is a magnetic force pulling millions across the Hudson, defying standard retail metrics.</p></div>
         </div>
     </div>
 
-    <!-- 02. The Engine -->
+    <!-- 02. The Engine (Interactive Hotspots) -->
     <div class="deep-dive" id="deep-engine">
-        <button class="close-btn"><i data-lucide="x"></i> Return to Hub</button>
+        <button class="close-btn magnetic-btn"><i data-lucide="x"></i> Return to Hub</button>
         <div class="deep-bg">
             <img src="./assets/neon_theme_park.png" alt="Engine Background">
             <div class="v-overlay-dark"></div>
+            
+            <!-- Digideck Style Hotspots -->
+            <div class="hotspot" style="top: 35%; left: 40%;">
+                <div class="hotspot-pulse"></div>
+                <div class="hotspot-dot"></div>
+                <div class="hotspot-tooltip">
+                    <h4>Record-Breaking Coasters</h4>
+                    <p>The steepest indoor drop in the world.</p>
+                </div>
+            </div>
+            <div class="hotspot" style="top: 60%; left: 65%;">
+                <div class="hotspot-pulse"></div>
+                <div class="hotspot-dot"></div>
+                <div class="hotspot-tooltip">
+                    <h4>Big SNOW</h4>
+                    <p>North America's first indoor real-snow ski park.</p>
+                </div>
+            </div>
         </div>
         <div class="deep-content centered">
-            <h2 class="playfair">The Entertainment Engine</h2>
-            <p class="emotional-copy">The Western Hemisphere's most immersive, record-breaking attractions. From the neon glow of Nickelodeon Universe to the rush of Big SNOW, we don't just host visitors—we build memories that bind them to this space forever.</p>
+            <div class="reveal-mask"><h2 class="playfair reveal-text">The Entertainment Engine</h2></div>
+            <div class="reveal-mask"><p class="emotional-copy reveal-text" style="transition-delay: 0.2s">The Western Hemisphere's most immersive, record-breaking attractions. Hover over the glowing nodes to explore features. We don't just host visitors—we build memories that bind them to this space forever.</p></div>
         </div>
     </div>
 
     <!-- 03. The Avenue (Spotlight Interactive) -->
     <div class="deep-dive spotlight-container" id="deep-avenue">
-        <button class="close-btn"><i data-lucide="x"></i> Return to Hub</button>
+        <button class="close-btn magnetic-btn"><i data-lucide="x"></i> Return to Hub</button>
         <div class="deep-bg spotlight-bg" id="spotlight-bg">
             <img src="./assets/luxury_avenue.png" alt="Avenue Background">
         </div>
@@ -115,8 +144,8 @@
         </div>
         <div class="deep-content pointer-none">
             <div class="spotlight-copy">
-                <h2 class="playfair">The Avenue</h2>
-                <h3 class="sales-metric">REVEAL THE POTENTIAL</h3>
+                <div class="reveal-mask"><h2 class="playfair reveal-text">The Avenue</h2></div>
+                <div class="reveal-mask"><h3 class="sales-metric reveal-text" style="transition-delay: 0.2s">REVEAL THE POTENTIAL</h3></div>
             </div>
             
             <!-- Hidden metrics that appear under the spotlight -->
@@ -133,14 +162,14 @@
 
     <!-- 04. The Stage -->
     <div class="deep-dive" id="deep-stage">
-        <button class="close-btn"><i data-lucide="x"></i> Return to Hub</button>
+        <button class="close-btn magnetic-btn"><i data-lucide="x"></i> Return to Hub</button>
         <div class="deep-bg">
             <img src="./assets/concert_stage.png" alt="Stage Background">
             <div class="v-overlay-dark"></div>
         </div>
         <div class="deep-content centered">
-            <h2 class="playfair">Your Global Stage</h2>
-            <p class="emotional-copy">From intimate VIP brand launches to 15,000-cap atrium concerts. When you partner with us, you don't rent space. You command the cultural conversation.</p>
+            <div class="reveal-mask"><h2 class="playfair reveal-text">Your Global Stage</h2></div>
+            <div class="reveal-mask"><p class="emotional-copy reveal-text" style="transition-delay: 0.2s">From intimate VIP brand launches to 15,000-cap atrium concerts. When you partner with us, you don't rent space. You command the cultural conversation.</p></div>
         </div>
     </div>
 

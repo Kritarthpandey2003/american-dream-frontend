@@ -454,6 +454,99 @@ a, button, .hub-card {
     letter-spacing: 2px;
 }
 
+/* === SENSORY & WOW FACTORS (Animations & Hotspots) === */
+
+/* Staggered Text Reveal */
+.reveal-mask {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.reveal-text {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.deep-dive.active .reveal-text {
+    transform: translateY(0);
+}
+
+/* Digideck Interactive Hotspots */
+.hotspot {
+    position: absolute;
+    z-index: 104;
+    cursor: pointer;
+}
+
+.hotspot-dot {
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 10px var(--accent);
+}
+
+.hotspot-pulse {
+    width: 40px; height: 40px;
+    background: rgba(212, 175, 55, 0.4);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-ring 2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes pulse-ring {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+}
+
+.hotspot-tooltip {
+    position: absolute;
+    top: 20px; left: 20px;
+    width: 250px;
+    background: rgba(10, 10, 10, 0.85);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 15px;
+    border-radius: 6px;
+    backdrop-filter: blur(10px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: var(--transition);
+    pointer-events: none;
+}
+
+.hotspot:hover .hotspot-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.hotspot-tooltip h4 {
+    color: var(--accent);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    font-family: 'Playfair Display', serif;
+}
+
+.hotspot-tooltip p {
+    font-size: 0.75rem;
+    color: #ccc;
+    line-height: 1.4;
+}
+
+/* Magnetic Button Transition */
+.magnetic-btn {
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), background 0.6s, color 0.6s;
+    will-change: transform;
+}
+
+
 /* === MOBILE RESPONSIVENESS === */
 @media (max-width: 768px) {
     .hub-grid {
