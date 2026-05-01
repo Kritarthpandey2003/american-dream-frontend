@@ -209,4 +209,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
     }
 
+    // === 5. PHASE 2: Expandable Architecture (Sub-Modules) ===
+    const openSpecsBtn = document.getElementById('open-venue-specs');
+    const specsModule = document.getElementById('venue-specs-module');
+    
+    if (openSpecsBtn && specsModule) {
+        const closeSpecsBtn = specsModule.querySelector('.close-sub-btn');
+        
+        openSpecsBtn.addEventListener('click', () => {
+            specsModule.classList.add('active');
+            if (uiSound) {
+                uiSound.currentTime = 0;
+                uiSound.play().catch(e => {});
+            }
+        });
+        
+        closeSpecsBtn.addEventListener('click', () => {
+            specsModule.classList.remove('active');
+        });
+    }
+
 });
