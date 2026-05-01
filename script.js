@@ -229,4 +229,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // === 6. PROTOTYPE BUTTON ACTIONS ===
+    const actionBtns = document.querySelectorAll('.prototype-action');
+    actionBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const originalText = this.innerHTML;
+            
+            // Visual success state
+            this.innerHTML = "✓ Request Received";
+            this.style.background = "var(--accent)";
+            this.style.color = "var(--bg-dark)";
+            this.style.pointerEvents = "none";
+            
+            // Optional: Play sound if available
+            if (uiSound) {
+                uiSound.currentTime = 0;
+                uiSound.play().catch(e => {});
+            }
+            
+            // Revert back after 3 seconds
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.style.background = "transparent";
+                this.style.color = "var(--accent)";
+                this.style.pointerEvents = "auto";
+            }, 3000);
+        });
+    });
+
 });
